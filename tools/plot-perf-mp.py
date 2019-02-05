@@ -24,17 +24,18 @@ with open("knl_mp.txt") as f:
         while(fline!='End simulation\n'):
             time_samples.append( int( fline.split()[2] ) )
             fline=f.readline()
-        avg_thr[num_threads]=np.array(time_samples).mean()
+        avg_thr[num_threads]=[np.array(time_samples).mean(),np.array(time_samples).std()]
         fline=f.readline()
         print(fline)
 
 avg = np.zeros(len(threads))
+std = np.zeros(len(threads))
 for th,idx in zip(threads,range(len(threads))):
-    avg[idx] = avg_thr[th]
+    avg[idx], std[idx] = avg_thr[th]
 
 plt.figure(figsize=(20,10))
 plt.subplot(1,2,1)
-plt.bar(np.log2(threads),avg/1000)
+plt.bar(np.log2(threads),avg)
 plt.ylabel("Time (ms)")
 plt.xlabel("$2^x$ threads")
 plt.title("Average Xeon KNL threads execution time \n for a 10k infoli cell population")
