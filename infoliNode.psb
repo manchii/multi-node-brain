@@ -5,34 +5,6 @@
 
 cd $PBS_O_WORKDIR
 
-export OMP_NUM_THREADS=1
-echo "Thread 1" > out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=2
-echo "Thread 2" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=4
-echo "Thread 4" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=8
-echo "Thread 8" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=16
-echo "Thread 16" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=32
-echo "Thread 32" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=64
-echo "Thread 64" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=128
-echo "Thread 128" >> out.txt
-./FinalProgram >> out.txt
-export OMP_NUM_THREADS=256
-echo "Thread 256" >> out.txt
-./FinalProgram >> out.txt
-
-
-
-
+#export OMP_NUM_THREADS=1
+echo "Thread 4" > out.txt
+./infoli_sim_impl >> out.txt
