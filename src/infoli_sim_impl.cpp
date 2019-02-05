@@ -34,7 +34,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <omp.h>
 #include "infoli.h"
 
-void initialize_cellstates(auto &IniArray){
+void initialize_cellstates(std::array<cellState,MAX_TIME_MUX> &IniArray){
   for(cellState &cell:IniArray){
     cell=InitState();
   }
