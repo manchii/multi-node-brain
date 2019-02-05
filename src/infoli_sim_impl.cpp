@@ -44,7 +44,7 @@ void generate_conn_matrix(mod_prec *Connectivity_Matrix){
     Connectivity_Matrix[i]=CONDUCTANCE;
   }
 }
-void stimulus_iApp(auto &iAppArray, int simStep){
+void stimulus_iApp(std::array<cellState,MAX_TIME_MUX> &iAppArray, int simStep){
   mod_prec iApp = (simStep>20000-1 && simStep<20500-1)? 6.0f : 0.0f;
   for(auto &iA: iAppArray){
       iA = iApp;
