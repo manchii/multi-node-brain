@@ -7,7 +7,7 @@ time = np.zeros(60000)
 vaxon_ref = np.zeros(60000)
 vaxon_test = np.zeros(60000)
 
-with open("InferiorOlive_Output_ref.txt") as f:
+with open("../InferiorOlive_Output_ref.txt") as f:
     idx=0
     f.readline()
     for line in f:
@@ -16,7 +16,7 @@ with open("InferiorOlive_Output_ref.txt") as f:
         vaxon_ref[idx]=float(parsed[3])
         idx+=1
 
-with open("InferiorOlive_Output.txt") as f:
+with open("../InferiorOlive_Output.txt") as f:
     idx=0
     f.readline()
     for line in f:
