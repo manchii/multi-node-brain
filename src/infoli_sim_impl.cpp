@@ -87,7 +87,7 @@ int main(int argc, char *argv[]){
     ComputeNetwork( IniArray.data(), iAppArray.data(), N_Size, Mux_Factor,Connectivity_Matrix.data(), cellOut.axonOut);
     //ComputeNetwork_iC( IniArray.data(), iAppArray.data(), N_Size, Mux_Factor,Connectivity_Matrix.data(), cellOut.axonOut);
     auto end = std::chrono::system_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     std::cout << "Time elapsed: " << elapsed.count() << std::endl;
     appendToFileAxon(outFile,cellOut);
     outFile<<std::endl;

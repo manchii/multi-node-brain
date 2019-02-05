@@ -1,0 +1,1296 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -O3 -inline-max-size=350 -qopt-report=5 -march=knl -std=c++17 -Wall -o infoli_sim_impl -lm -qopenmp -ffast-math
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 350 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1/57=1.8%] src/infoli_sim_impl.cpp(63,33)
+  -> (70,13) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> EXTERN: (70,40) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (70,57) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (70,75) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <1>]]
+  -> INLINE (MANUAL): (71,17) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const) (isz = 1) (sz = 6)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(737,7) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *) noexcept (isz = 35) (sz = 42)
+      -> INLINE (MANUAL): (738,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+          -> EXTERN: (282,20) __cxa_call_unexpected
+          -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (738,9) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) noexcept (isz = 26) (sz = 33)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+            -> EXTERN: (282,20) __cxa_call_unexpected
+            -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (738,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *) noexcept (isz = 34) (sz = 39)
+        -> EXTERN: (239,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+        -> EXTERN: (239,7) __cxa_call_unexpected
+        -> EXTERN: (239,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (239,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+  -> INLINE (MANUAL): (71,17) std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const) (isz = 1) (sz = 6)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(682,7) std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *) (isz = 72) (sz = 79)
+      -> INLINE (MANUAL): (682,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+          -> EXTERN: (282,20) __cxa_call_unexpected
+          -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (682,7) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *) noexcept (isz = 34) (sz = 39)
+        -> EXTERN: (239,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+        -> EXTERN: (239,7) __cxa_call_unexpected
+        -> EXTERN: (239,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (239,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+      -> INLINE (MANUAL): (682,7) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) noexcept (isz = 26) (sz = 33)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+            -> EXTERN: (282,20) __cxa_call_unexpected
+            -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> EXTERN: (682,7) std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> INLINE (MANUAL): (682,7) std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) (isz = 44) (sz = 51)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(460,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *) (isz = 19) (sz = 24)
+            -> EXTERN: (460,7) std::ios_base::ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+            -> EXTERN: (282,20) __cxa_call_unexpected
+            -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(385,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+      -> INLINE (MANUAL): (682,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(460,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *) (isz = 19) (sz = 24)
+          -> EXTERN: (460,7) std::ios_base::ios_base(std::ios_base *const)
+      -> EXTERN: (683,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+  -> INLINE (MANUAL): (72,11) std::basic_ofstream<char, std::char_traits<char>>::open(std::basic_ofstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode) (isz = 23) (sz = 32)
+    -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(802,18) std::basic_filebuf<char, std::char_traits<char>>::open(std::basic_filebuf<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(802,35) std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(803,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate) (isz = 7) (sz = 14)
+      -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) (isz = 0) (sz = 7)
+    -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(807,10) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+  -> (73,11) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (73,62) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <1>]]
+  -> INLINE: (75,3) initialize_cellstates(std::array<cellState, 10000UL> &) (isz = 81) (sz = 86)
+    -> INLINE (MANUAL): (38,23) std::array<cellState, 10000UL>::begin(std::array<cellState, 10000UL> *) noexcept (isz = 10) (sz = 17)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(127,25) std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept (isz = 6) (sz = 13)
+        -> INLINE (MANUAL): (235,16) std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (38,23) std::array<cellState, 10000UL>::end(std::array<cellState, 10000UL> *) noexcept (isz = 11) (sz = 18)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(135,25) std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept (isz = 6) (sz = 13)
+        -> INLINE (MANUAL): (235,16) std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+    -> INLINE: (39,10) InitState() (isz = 18) (sz = 23)
+  -> INLINE: (76,3) generate_conn_matrix(mod_prec *) (isz = 15) (sz = 20)
+  -> INLINE (MANUAL): (76,44) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE: (84,5) stimulus_iApp(std::array<mod_prec, 10000UL> &, int) (isz = 51) (sz = 58)
+    -> INLINE (MANUAL): (49,17) std::array<mod_prec, 10000UL>::begin(std::array<mod_prec, 10000UL> *) noexcept (isz = 10) (sz = 17)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(127,25) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+        -> INLINE (MANUAL): (235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (49,17) std::array<mod_prec, 10000UL>::end(std::array<mod_prec, 10000UL> *) noexcept (isz = 11) (sz = 18)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(135,25) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+        -> INLINE (MANUAL): (235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE: (85,5) appendToFileStim(std::ofstream &, int, mod_prec) (isz = 25) (sz = 34)
+    -> EXTERN: (54,11) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+    -> (54,20) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+       [[ Called routine is noinline  <1>]]
+    -> (54,25) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double) (isz = 1) (sz = 10)
+       [[ Called routine is noinline  <1>]]
+    -> (54,39) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+       [[ Called routine is noinline  <1>]]
+    -> (54,44) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+       [[ Called routine is noinline  <1>]]
+    -> (54,50) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+       [[ Called routine is noinline  <1>]]
+  -> INLINE (MANUAL): (85,41) std::array<mod_prec, 10000UL>::operator[](std::array<mod_prec, 10000UL> *, std::array<mod_prec, 10000UL>::size_type) noexcept (isz = 7) (sz = 16)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(186,16) std::__array_traits<mod_prec, 10000UL>::_S_ref(const std::__array_traits<mod_prec, 10000UL>::_Type &, std::size_t) noexcept (isz = 1) (sz = 10)
+  -> EXTERN: (86,18) std::chrono::_V2::system_clock::now() noexcept
+  -> EXTERN: (87,5) ComputeNetwork(cellState *, mod_prec *, int, int, mod_prec *, mod_prec *)
+  -> INLINE (MANUAL): (87,30) std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept (isz = 6) (sz = 13)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(235,16) std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (87,48) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (87,95) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> EXTERN: (89,16) std::chrono::_V2::system_clock::now() noexcept
+  -> INLINE (MANUAL): (90,80) std::chrono::duration_cast<std::chrono::microseconds, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &) (isz = 9) (sz = 16)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono:(203,22) std::chrono::__duration_cast_impl<std::chrono::microseconds, std::ratio_divide<std::nano, std::chrono::duration<int64_t, std::micro>::period>, std::__success_type<long>::type, true, false>::__cast<int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &) (isz = 8) (sz = 15)
+      -> INLINE (MANUAL): (162,20) std::chrono::duration<int64_t, std::micro>::duration<std::chrono::duration<int64_t, std::micro>::rep, void>(std::chrono::duration<int64_t, std::micro> *, const std::chrono::duration<int64_t, std::micro>::rep &) (isz = 0) (sz = 7)
+      -> INLINE (MANUAL): (163,29) std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (90,80) std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration, std::chrono::_V2::system_clock::duration>(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &, const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &) (isz = 32) (sz = 41)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono:(747,16) std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration>::time_since_epoch(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> *) const (isz = 2) (sz = 8)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono:(747,43) std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration>::time_since_epoch(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> *) const (isz = 2) (sz = 8)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono:(747,43) std::chrono::operator-<int64_t, std::nano, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &, const std::chrono::duration<int64_t, std::nano> &) (isz = 19) (sz = 28)
+      -> INLINE (MANUAL): (463,14) std::chrono::duration<int64_t, std::nano>::duration<long, void>(std::chrono::duration<int64_t, std::nano> *, const long &) (isz = 0) (sz = 7)
+      -> INLINE (MANUAL): (463,26) std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (463,48) std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const (isz = 0) (sz = 6)
+  -> (91,15) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (91,35) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long) (isz = 1) (sz = 10)
+     [[ Called routine is noinline  <1>]]
+  -> INLINE (MANUAL): (91,46) std::chrono::duration<int64_t, std::micro>::count(const std::chrono::duration<int64_t, std::micro> *) const (isz = 0) (sz = 6)
+  -> (91,54) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <1>]]
+  -> INLINE: (92,5) appendToFileAxon(std::ofstream &, const returnState &) (isz = 31) (sz = 38)
+    -> EXTERN: (59,13) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+    -> (59,16) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+       [[ Called routine is noinline  <1>]]
+    -> (59,22) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+       [[ Called routine is noinline  <1>]]
+    -> (59,42) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+       [[ Called routine is noinline  <1>]]
+  -> (93,12) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <1>]]
+  -> (95,13) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (95,33) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <1>]]
+  -> INLINE (MANUAL): (96,11) std::basic_ofstream<char, std::char_traits<char>>::close(std::basic_ofstream<char, std::char_traits<char>> *) (isz = 12) (sz = 17)
+    -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(841,18) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(842,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate) (isz = 7) (sz = 14)
+      -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(158,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (98,3) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const) (isz = 1) (sz = 6)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream:(737,7) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *) noexcept (isz = 35) (sz = 42)
+      -> INLINE (MANUAL): (738,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+          -> EXTERN: (282,20) __cxa_call_unexpected
+          -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (738,9) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) noexcept (isz = 26) (sz = 33)
+        -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h:(282,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept (isz = 10) (sz = 15)
+            -> EXTERN: (282,20) __cxa_call_unexpected
+            -> EXTERN: (282,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (738,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *) noexcept (isz = 34) (sz = 39)
+        -> EXTERN: (239,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+        -> EXTERN: (239,7) __cxa_call_unexpected
+        -> EXTERN: (239,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (239,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *) noexcept
+        -> INLINE (MANUAL): (239,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const) (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept (isz = 9) (sz = 14)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *) throw()
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(38,3) inlined into src/infoli_sim_impl.cpp(75,3)
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->V_dend>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Hcurrent_q>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Calcium_r>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Potassium_s>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->I_CaH>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Ca2Plus>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->g_CaL>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->V_soma>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Sodium_m>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Sodium_h>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Calcium_k>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Calcium_l>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Potassium_n>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Potassium_p>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Potassium_x_s>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->V_axon>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Sodium_m_a>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Sodium_h_a>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15416: vectorization support: non-unit strided store was generated for the variable <U17_V->Potassium_x_a>, stride is 19   [ src/infoli_sim_impl.cpp(39,5) ]
+   remark #15305: vectorization support: vector length 32
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15453: unmasked strided stores: 19 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 48 
+   remark #15477: vector cost: 33.840 
+   remark #15478: estimated potential speedup: 1.410 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=312
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(38,3) inlined into src/infoli_sim_impl.cpp(75,3)
+<Remainder loop for vectorization>
+   remark #15305: vectorization support: vector length 16
+   remark #15427: loop was completely unrolled
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15453: unmasked strided stores: 19 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 48 
+   remark #15477: vector cost: 33.840 
+   remark #15478: estimated potential speedup: 1.410 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(43,3) inlined into src/infoli_sim_impl.cpp(76,3)
+   remark #15388: vectorization support: reference Connectivity_Matrix._M_elems[i] has aligned access   [ src/infoli_sim_impl.cpp(44,5) ]
+   remark #15305: vectorization support: vector length 16
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 15.970 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=156
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(43,3) inlined into src/infoli_sim_impl.cpp(76,3)
+<Remainder loop for vectorization>
+   remark #15388: vectorization support: reference Connectivity_Matrix._M_elems[i] has aligned access   [ src/infoli_sim_impl.cpp(44,5) ]
+   remark #15305: vectorization support: vector length 16
+   remark #15427: loop was completely unrolled
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 15.970 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3) inlined into src/infoli_sim_impl.cpp(84,5)
+<Peeled loop for vectorization>
+   remark #15389: vectorization support: reference *U1a_V has unaligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 1.250
+   remark #15301: PEEL LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 15.830 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=1
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3) inlined into src/infoli_sim_impl.cpp(84,5)
+   remark #15388: vectorization support: reference *U1a_V has aligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15305: vectorization support: vector length 16
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15309: vectorization support: normalized vectorization overhead 0.917
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 15.830 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=156
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3) inlined into src/infoli_sim_impl.cpp(84,5)
+<Remainder loop for vectorization>
+   remark #15388: vectorization support: reference *U1a_V has aligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 1.200
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 15.830 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(58,3) inlined into src/infoli_sim_impl.cpp(92,5)
+   remark #26015: Exception can be thrown by the call to std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)   [ src/infoli_sim_impl.cpp(59,13) ]
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ src/infoli_sim_impl.cpp(59,13) ]
+   remark #25436: completely unrolled by 4  
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(83,3)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ src/infoli_sim_impl.cpp(54,11) ]
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(39,5):remark #34065: adjacent sparse (strided) stores partitioned for speed. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x00007FFFF }.
+src/infoli_sim_impl.cpp(39,5):remark #34034: adjacent sparse (strided) stores optimized for speed. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x00000FFFF }.
+src/infoli_sim_impl.cpp(39,5):remark #34070: adjacent sparse (strided) stores seem unprofitable to optimize. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x000040000 }.
+src/infoli_sim_impl.cpp(39,5):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x000030000 }.
+src/infoli_sim_impl.cpp(39,5):remark #34065: adjacent sparse (strided) stores partitioned for speed. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x00007FFFF }.
+src/infoli_sim_impl.cpp(39,5):remark #34034: adjacent sparse (strided) stores optimized for speed. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x00000FFFF }.
+src/infoli_sim_impl.cpp(39,5):remark #34070: adjacent sparse (strided) stores seem unprofitable to optimize. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x000040000 }.
+src/infoli_sim_impl.cpp(39,5):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { 76 }, types { F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512, F32-V512 }, number of elements { 16 }, select mask { 0x000030000 }.
+src/infoli_sim_impl.cpp(63,33):remark #34051: REGISTER ALLOCATION : [main] src/infoli_sim_impl.cpp:63
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   51[ rax rdx rcx rbx rsi rdi r8-r9 r12-r15 zmm0-zmm31 k1-k7]
+        
+    Routine temporaries
+        Total         :     514
+            Global    :     140
+            Local     :     374
+        Regenerable   :     164
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :   880548 bytes*
+            Reads     :      27 [3.54e+01 ~ 0.0%]
+            Writes    :      58 [4.02e+04 ~ 55.6%]
+        Spills        :      48 bytes*
+            Reads     :       6 [1.04e+01 ~ 0.0%]
+            Writes    :       6 [5.39e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(225,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(221,7)
+
+===========================================================================
+
+Begin optimization report for: std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(557,5)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(158,7)
+
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::char_traits<char>::length(const std::char_traits<char>::char_type *)) [6/57=10.5%] /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/char_traits.h(269,7)
+  -> EXTERN: (269,16) __builtin_strlen(const char *)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/char_traits.h(269,7):remark #34051: REGISTER ALLOCATION : [_ZNSt11char_traitsIcE6lengthEPKc] /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/char_traits.h:269
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rax rdx rdi]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       7
+            Local     :       5
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(167,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(109,7)
+
+===========================================================================
+
+Begin optimization report for: generate_conn_matrix(mod_prec *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (generate_conn_matrix(mod_prec *)) [9/57=15.8%] src/infoli_sim_impl.cpp(42,57)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(43,3)
+<Peeled loop for vectorization>
+   remark #15389: vectorization support: reference Connectivity_Matrix[i] has unaligned access   [ src/infoli_sim_impl.cpp(44,5) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 16
+   remark #15309: vectorization support: normalized vectorization overhead 1.273
+   remark #15301: PEEL LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 4 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 21.110 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(43,3)
+   remark #15388: vectorization support: reference Connectivity_Matrix[i] has aligned access   [ src/infoli_sim_impl.cpp(44,5) ]
+   remark #15305: vectorization support: vector length 16
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15309: vectorization support: normalized vectorization overhead 0.833
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 4 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 21.110 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=156
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(43,3)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference Connectivity_Matrix[i] has unaligned access   [ src/infoli_sim_impl.cpp(44,5) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 16
+   remark #15309: vectorization support: normalized vectorization overhead 1.273
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 4 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 21.110 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(42,57):remark #34051: REGISTER ALLOCATION : [_Z20generate_conn_matrixPf] src/infoli_sim_impl.cpp:42
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    9[ rax rdx rcx rdi zmm16-zmm19 k1]
+        
+    Routine temporaries
+        Total         :      35
+            Global    :      23
+            Local     :      12
+        Regenerable   :       3
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: stimulus_iApp(std::array<mod_prec, 10000UL> &, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (stimulus_iApp(std::array<mod_prec, 10000UL> &, int)) [10/57=17.5%] src/infoli_sim_impl.cpp(47,78)
+  -> INLINE (MANUAL): (49,17) std::array<mod_prec, 10000UL>::end(std::array<mod_prec, 10000UL> *) noexcept (isz = 11) (sz = 18)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(135,25) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+      -> INLINE (MANUAL): (235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (49,17) std::array<mod_prec, 10000UL>::begin(std::array<mod_prec, 10000UL> *) noexcept (isz = 10) (sz = 17)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(127,25) std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept (isz = 6) (sz = 13)
+      -> INLINE (MANUAL): (235,16) std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3)
+<Peeled loop for vectorization>
+   remark #15389: vectorization support: reference *U1a_V has unaligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 1.250
+   remark #15301: PEEL LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 11.680 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=1
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3)
+   remark #15389: vectorization support: reference *U1a_V has unaligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 16
+   remark #15399: vectorization support: unroll factor set to 2
+   remark #15309: vectorization support: normalized vectorization overhead 1.833
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 11.680 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(49,3)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference *U1a_V has unaligned access   [ src/infoli_sim_impl.cpp(50,7) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 1.250
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.180 
+   remark #15478: estimated potential speedup: 11.680 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(47,78):remark #34051: REGISTER ALLOCATION : [_Z13stimulus_iAppRSt5arrayIfLm10000EEi] src/infoli_sim_impl.cpp:47
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   16[ rax rdx rcx rsi rdi r8 zmm0-zmm1 zmm16-zmm20 k1-k3]
+        
+    Routine temporaries
+        Total         :      56
+            Global    :      31
+            Local     :      25
+        Regenerable   :       7
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: appendToFileStim(std::ofstream &, int, mod_prec)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (appendToFileStim(std::ofstream &, int, mod_prec)) [11/57=19.3%] src/infoli_sim_impl.cpp(53,74)
+  -> EXTERN: (54,11) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (54,20) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (54,25) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double) (isz = 1) (sz = 10)
+     [[ Called routine is noinline  <1>]]
+  -> (54,39) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (54,44) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+     [[ Called routine is noinline  <1>]]
+  -> (54,50) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(53,74):remark #34051: REGISTER ALLOCATION : [_Z16appendToFileStimRSt14basic_ofstreamIcSt11char_traitsIcEEif] src/infoli_sim_impl.cpp:53
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rsi rdi r15 zmm0 zmm16]
+        
+    Routine temporaries
+        Total         :      37
+            Global    :      19
+            Local     :      18
+        Regenerable   :       4
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [2.00e+00 ~ 5.4%]
+            Writes    :       2 [2.00e+00 ~ 5.4%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: appendToFileAxon(std::ofstream &, const returnState &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (appendToFileAxon(std::ofstream &, const returnState &)) [12/57=21.1%] src/infoli_sim_impl.cpp(56,74)
+  -> EXTERN: (59,13) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (59,16) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+  -> (59,22) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+     [[ Called routine is noinline  <1>]]
+  -> (59,42) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <1>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(58,3)
+   remark #15382: vectorization support: call to function std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int) cannot be vectorized   [ src/infoli_sim_impl.cpp(59,13) ]
+   remark #15382: vectorization support: call to function std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) cannot be vectorized   [ src/infoli_sim_impl.cpp(59,16) ]
+   remark #15382: vectorization support: call to function std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) cannot be vectorized   [ src/infoli_sim_impl.cpp(59,22) ]
+   remark #15382: vectorization support: call to function std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) cannot be vectorized   [ src/infoli_sim_impl.cpp(59,42) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #25436: completely unrolled by 4  
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(56,74):remark #34051: REGISTER ALLOCATION : [_Z16appendToFileAxonRSt14basic_ofstreamIcSt11char_traitsIcEERK11returnState] src/infoli_sim_impl.cpp:56
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rbp rsi rdi r12 zmm0]
+        
+    Routine temporaries
+        Total         :      72
+            Global    :      34
+            Local     :      38
+        Regenerable   :      14
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [2.00e+00 ~ 2.9%]
+            Writes    :       2 [2.00e+00 ~ 2.9%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) noexcept)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf(198,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/streambuf(197,7)
+
+===========================================================================
+
+Begin optimization report for: std::ctype<char>::widen(const std::ctype<char> *, char) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::ctype<char>::widen(const std::ctype<char> *, char) const) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/locale_facets.h(873,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(138,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *) noexcept)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(282,20)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(282,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::widen(const std::basic_ios<char, std::char_traits<char>> *, char) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::widen(const std::basic_ios<char, std::char_traits<char>> *, char) const)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(450,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(463,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(460,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *) noexcept)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(93,24)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const long *const *))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(385,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *) noexcept)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(239,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(683,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(682,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *, const long *const *) noexcept)/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(738,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(737,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::open(std::basic_ofstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::open(std::basic_ofstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(801,7)
+
+===========================================================================
+
+Begin optimization report for: std::basic_ofstream<char, std::char_traits<char>>::close(std::basic_ofstream<char, std::char_traits<char>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::basic_ofstream<char, std::char_traits<char>>::close(std::basic_ofstream<char, std::char_traits<char>> *))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/fstream(840,7)
+
+===========================================================================
+
+Begin optimization report for: std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(60,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<cellState, 10000UL>::begin(std::array<cellState, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<cellState, 10000UL>::begin(std::array<cellState, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(127,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<cellState, 10000UL>::end(std::array<cellState, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<cellState, 10000UL>::end(std::array<cellState, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(135,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(235,7)
+
+===========================================================================
+
+Begin optimization report for: std::__array_traits<mod_prec, 10000UL>::_S_ref(const std::__array_traits<mod_prec, 10000UL>::_Type &, std::size_t) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__array_traits<mod_prec, 10000UL>::_S_ref(const std::__array_traits<mod_prec, 10000UL>::_Type &, std::size_t) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(56,7)
+
+===========================================================================
+
+Begin optimization report for: std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__array_traits<mod_prec, 10000UL>::_S_ptr(const std::__array_traits<mod_prec, 10000UL>::_Type &) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(60,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<mod_prec, 10000UL>::begin(std::array<mod_prec, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<mod_prec, 10000UL>::begin(std::array<mod_prec, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(127,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<mod_prec, 10000UL>::end(std::array<mod_prec, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<mod_prec, 10000UL>::end(std::array<mod_prec, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(135,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<mod_prec, 10000UL>::operator[](std::array<mod_prec, 10000UL> *, std::array<mod_prec, 10000UL>::size_type) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<mod_prec, 10000UL>::operator[](std::array<mod_prec, 10000UL> *, std::array<mod_prec, 10000UL>::size_type) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(186,7)
+
+===========================================================================
+
+Begin optimization report for: std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::array<mod_prec, 10000UL>::data(std::array<mod_prec, 10000UL> *) noexcept) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array(235,7)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(341,2)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration<int64_t, std::nano>::duration<long, void>(std::chrono::duration<int64_t, std::nano> *, const long &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::duration<int64_t, std::nano>::duration<long, void>(std::chrono::duration<int64_t, std::nano> *, const long &)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(326,35)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration>::time_since_epoch(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration>::time_since_epoch(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> *) const) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(633,2)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration<int64_t, std::micro>::count(const std::chrono::duration<int64_t, std::micro> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::duration<int64_t, std::micro>::count(const std::chrono::duration<int64_t, std::micro> *) const) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(341,2)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration<int64_t, std::micro>::duration<std::chrono::duration<int64_t, std::micro>::rep, void>(std::chrono::duration<int64_t, std::micro> *, const std::chrono::duration<int64_t, std::micro>::rep &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::duration<int64_t, std::micro>::duration<std::chrono::duration<int64_t, std::micro>::rep, void>(std::chrono::duration<int64_t, std::micro> *, const std::chrono::duration<int64_t, std::micro>::rep &)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(326,35)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::__duration_cast_impl<std::chrono::microseconds, std::ratio_divide<std::nano, std::chrono::duration<int64_t, std::micro>::period>, std::__success_type<long>::type, true, false>::__cast<int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::__duration_cast_impl<std::chrono::microseconds, std::ratio_divide<std::nano, std::chrono::duration<int64_t, std::micro>::period>, std::__success_type<long>::type, true, false>::__cast<int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(160,4)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration, std::chrono::_V2::system_clock::duration>(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &, const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration, std::chrono::_V2::system_clock::duration>(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &, const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(747,7)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::operator-<int64_t, std::nano, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &, const std::chrono::duration<int64_t, std::nano> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::chrono::operator-<int64_t, std::nano, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &, const std::chrono::duration<int64_t, std::nano> &)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(459,7)
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration_cast<std::chrono::microseconds, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::chrono::duration_cast<std::chrono::microseconds, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)) [49/57=86.0%] /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(195,7)
+  -> INLINE (MANUAL): (203,22) std::chrono::__duration_cast_impl<std::chrono::microseconds, std::ratio_divide<std::nano, std::chrono::duration<int64_t, std::micro>::period>, std::__success_type<long>::type, true, false>::__cast<int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &) (isz = 8) (sz = 15)
+    -> INLINE (MANUAL): (162,20) std::chrono::duration<int64_t, std::micro>::duration<std::chrono::duration<int64_t, std::micro>::rep, void>(std::chrono::duration<int64_t, std::micro> *, const std::chrono::duration<int64_t, std::micro>::rep &) (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): (163,29) std::chrono::duration<int64_t, std::nano>::count(const std::chrono::duration<int64_t, std::nano> *) const (isz = 0) (sz = 6)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono(195,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6chrono13duration_castINS_8durationIlSt5ratioILl1ELl1000000EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsr3std6chrono13__is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE] /opt/compilers/gcc-7.2.0/include/c++/7.2.0/chrono:195
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rcx rdi]
+        
+    Routine temporaries
+        Total         :      18
+            Global    :       0
+            Local     :      18
+        Regenerable   :       2
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/ios_base.h(130,3)
+
+===========================================================================
+
+Begin optimization report for: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/ios_base.h(170,3)
+
+===========================================================================
+
+Begin optimization report for: std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(591,5)
+
+===========================================================================
+
+Begin optimization report for: std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &))/opt/compilers/gcc-7.2.0/include/c++/7.2.0/ostream(613,5)
+
+===========================================================================
+
+Begin optimization report for: std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)) /opt/compilers/gcc-7.2.0/include/c++/7.2.0/bits/basic_ios.h(48,5)
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [55/57=96.5%] <compiler generated>
+  -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/iostream:(74,25) __cxa_atexit(void (*)(void *), void *, void *)
+  -> EXTERN: /opt/compilers/gcc-7.2.0/include/c++/7.2.0/iostream:(74,25) std::ios_base::Init::Init(std::ios_base::Init *)
+
+
+    Report from: Code generation optimizations [cg]
+
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [__sti__$E] (null):0
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      13
+            Global    :       7
+            Local     :       6
+        Regenerable   :       7
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: InitState()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (InitState()) [56/57=98.2%] src/infoli_sim_impl.cpp(101,22)
+
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(127,12):remark #34014: optimization advice for memcpy: increase the destination's alignment to 64 (and use __assume_aligned) to increase the width of stores
+src/infoli_sim_impl.cpp(127,12):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (64, 0), and destination (alignment, offset): (1, 0)
+src/infoli_sim_impl.cpp(101,22):remark #34051: REGISTER ALLOCATION : [_Z9InitStatev] src/infoli_sim_impl.cpp:101
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    7[ rax rdx rcx rsi rdi r8 zmm16]
+        
+    Routine temporaries
+        Total         :      18
+            Global    :       0
+            Local     :      18
+        Regenerable   :       4
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :      76 bytes*
+            Reads     :       1 [1.00e+00 ~ 2.0%]
+            Writes    :      19 [1.90e+01 ~ 38.8%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: initialize_cellstates(std::array<cellState, 10000UL> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (initialize_cellstates(std::array<cellState, 10000UL> &)) [57/57=100.0%] src/infoli_sim_impl.cpp(37,73)
+  -> INLINE (MANUAL): (38,23) std::array<cellState, 10000UL>::end(std::array<cellState, 10000UL> *) noexcept (isz = 11) (sz = 18)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(135,25) std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept (isz = 6) (sz = 13)
+      -> INLINE (MANUAL): (235,16) std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (38,23) std::array<cellState, 10000UL>::begin(std::array<cellState, 10000UL> *) noexcept (isz = 10) (sz = 17)
+    -> INLINE (MANUAL): /opt/compilers/gcc-7.2.0/include/c++/7.2.0/array:(127,25) std::array<cellState, 10000UL>::data(std::array<cellState, 10000UL> *) noexcept (isz = 6) (sz = 13)
+      -> INLINE (MANUAL): (235,16) std::__array_traits<cellState, 10000UL>::_S_ptr(const std::__array_traits<cellState, 10000UL>::_Type &) noexcept (isz = 0) (sz = 6)
+  -> INLINE: (39,10) InitState() (isz = 18) (sz = 23)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at src/infoli_sim_impl.cpp(38,3)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between U17_V->V_dend (39:10) and U17_V->V_axon (39:10)
+   remark #15346: vector dependence: assumed OUTPUT dependence between U17_V->V_axon (39:10) and U17_V->V_dend (39:10)
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+src/infoli_sim_impl.cpp(37,73):remark #34051: REGISTER ALLOCATION : [_Z21initialize_cellstatesRSt5arrayI9cellStateLm10000EE] src/infoli_sim_impl.cpp:37
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   63[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm31 k0-k7]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   15[ rax rdx rcx rbx rbp rsi rdi r8-r15]
+        
+    Routine temporaries
+        Total         :      24
+            Global    :      23
+            Local     :       1
+        Regenerable   :      15
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      48 bytes*
+            Reads     :       6 [4.66e+00 ~ 3.5%]
+            Writes    :       6 [4.66e+00 ~ 3.5%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The routine declaration is annotated with "__attribute__((noinline))".  
+    Remove this annotation to permit the compiler to inline this routine.
+

@@ -164,7 +164,7 @@ void ComputeNetwork(
 		neighVdend[j] = local_state[j].dend.V_dend ;
 	}
 
-	# pragma omp parallel for private(j) schedule(dynamic,MAX_TIME_MUX/8) num_threads(4)
+	# pragma omp parallel for private(j) schedule(dynamic,MAX_TIME_MUX/32)
 	for(j=0;j<MAX_TIME_MUX;j++){
 
 		//new_state0[j].dend = CompDend(local_state0[j].dend, local_state0[j].soma.V_soma, iAppin[j], neighVdend0, N_Size, Connectivity_Matrix+(NUM_NEIGH_CELLS*j));

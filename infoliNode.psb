@@ -1,10 +1,25 @@
 #PBS -N InfOli
 #PBS -q phi-n2h72
-#PBS -l nodes=zarate-4c.cnca:ppn=256
+#PBS -l nodes=zarate-3c.cnca:ppn=256
 #PBS -l walltime=24:00:00
 
 cd $PBS_O_WORKDIR
 
-#export OMP_NUM_THREADS=1
-echo "Thread 4" > out.txt
+export OMP_NUM_THREADS=1
+echo "Thread 1" > out.txt
+./infoli_sim_impl >> out.txt
+export OMP_NUM_THREADS=2
+echo "Thread 2" >> out.txt
+./infoli_sim_impl >> out.txt
+export OMP_NUM_THREADS=4
+echo "Thread 4" >> out.txt
+./infoli_sim_impl >> out.txt
+export OMP_NUM_THREADS=8
+echo "Thread 8" >> out.txt
+./infoli_sim_impl >> out.txt
+export OMP_NUM_THREADS=16
+echo "Thread 16" >> out.txt
+./infoli_sim_impl >> out.txt
+export OMP_NUM_THREADS=32
+echo "Thread 32" >> out.txt
 ./infoli_sim_impl >> out.txt
