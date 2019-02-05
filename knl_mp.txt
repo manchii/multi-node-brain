@@ -1,0 +1,138 @@
+Thread 1
+Inferior Olive Model (10000 cell network)
+Time elapsed: 67769
+Time elapsed: 9157
+Time elapsed: 9167
+Time elapsed: 8511
+Time elapsed: 8385
+Time elapsed: 8093
+Time elapsed: 7555
+Time elapsed: 6751
+Time elapsed: 6782
+Time elapsed: 6776
+Time elapsed: 6724
+Time elapsed: 6752
+Time elapsed: 6735
+Time elapsed: 6791
+Time elapsed: 6747
+Time elapsed: 6777
+Time elapsed: 6760
+Time elapsed: 6741
+Time elapsed: 6765
+Time elapsed: 6755
+End simulation
+Thread 2
+Inferior Olive Model (10000 cell network)
+Time elapsed: 68867
+Time elapsed: 4439
+Time elapsed: 3620
+Time elapsed: 3550
+Time elapsed: 3577
+Time elapsed: 3573
+Time elapsed: 3540
+Time elapsed: 3572
+Time elapsed: 3575
+Time elapsed: 3537
+Time elapsed: 3550
+Time elapsed: 3549
+Time elapsed: 3574
+Time elapsed: 3538
+Time elapsed: 3546
+Time elapsed: 3556
+Time elapsed: 3562
+Time elapsed: 3543
+Time elapsed: 3571
+Time elapsed: 3535
+End simulation
+Thread 4
+Inferior Olive Model (10000 cell network)
+Time elapsed: 44360
+Time elapsed: 1920
+Time elapsed: 1923
+Time elapsed: 1918
+Time elapsed: 1966
+Time elapsed: 1923
+Time elapsed: 1923
+Time elapsed: 1921
+Time elapsed: 1925
+Time elapsed: 1915
+Time elapsed: 1915
+Time elapsed: 1920
+Time elapsed: 1920
+Time elapsed: 1934
+Time elapsed: 1908
+Time elapsed: 1926
+Time elapsed: 1925
+Time elapsed: 1929
+Time elapsed: 1919
+Time elapsed: 1917
+End simulation
+Thread 8
+Inferior Olive Model (10000 cell network)
+Time elapsed: 46067
+Time elapsed: 1121
+Time elapsed: 1114
+Time elapsed: 1139
+Time elapsed: 1115
+Time elapsed: 1116
+Time elapsed: 1123
+Time elapsed: 1111
+Time elapsed: 1115
+Time elapsed: 1115
+Time elapsed: 1133
+Time elapsed: 1114
+Time elapsed: 1116
+Time elapsed: 1113
+Time elapsed: 1114
+Time elapsed: 1115
+Time elapsed: 1114
+Time elapsed: 1116
+Time elapsed: 1108
+Time elapsed: 1114
+End simulation
+Thread 16
+Inferior Olive Model (10000 cell network)
+Time elapsed: 54453
+Time elapsed: 1112
+Time elapsed: 1101
+Time elapsed: 1078
+Time elapsed: 1078
+Time elapsed: 1077
+Time elapsed: 1092
+Time elapsed: 1084
+Time elapsed: 1081
+Time elapsed: 1070
+Time elapsed: 1093
+Time elapsed: 1075
+Time elapsed: 1075
+Time elapsed: 1077
+Time elapsed: 1091
+Time elapsed: 1079
+Time elapsed: 1077
+Time elapsed: 1072
+Time elapsed: 1092
+Time elapsed: 1077
+End simulation
+Thread 32
+Inferior Olive Model (10000 cell network)
+Time elapsed: 66306
+Time elapsed: 1098
+Time elapsed: 1100
+Time elapsed: 1084
+Time elapsed: 1088
+Time elapsed: 1084
+Time elapsed: 1096
+Time elapsed: 1085
+Time elapsed: 1084
+Time elapsed: 1082
+Time elapsed: 1081
+Time elapsed: 1077
+Time elapsed: 1081
+Time elapsed: 1082
+Time elapsed: 1086
+Time elapsed: 1080
+Time elapsed: 1080
+Time elapsed: 1080
+Time elapsed: 1080
+Time elapsed: 1080
+End simulation
