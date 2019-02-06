@@ -5,21 +5,54 @@
 
 cd $PBS_O_WORKDIR
 
+export THREADS="hard-scaling.txt"
+export NUM_PROBLEM="soft-scaling.txt"
+
+
 export OMP_NUM_THREADS=1
-echo "Thread 1" > out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 1" > $THREADS
+./infoli_sim_impl >> $THREADS
 export OMP_NUM_THREADS=2
-echo "Thread 2" >> out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 2" >> $THREADS
+./infoli_sim_impl >> $THREADS
 export OMP_NUM_THREADS=4
-echo "Thread 4" >> out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 4" >> $THREADS
+./infoli_sim_impl >> $THREADS
 export OMP_NUM_THREADS=8
-echo "Thread 8" >> out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 8" >> $THREADS
+./infoli_sim_impl >> $THREADS
 export OMP_NUM_THREADS=16
-echo "Thread 16" >> out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 16" >> $THREADS
+./infoli_sim_impl >> $THREADS
 export OMP_NUM_THREADS=32
-echo "Thread 32" >> out.txt
-./infoli_sim_impl >> out.txt
+echo "Thread 32" >> $THREADS
+./infoli_sim_impl >> $THREADS
+
+sed -i "44s/.*/#define TIME_MUX_FACTOR 100/" src/infoli.h
+make cluster
+echo "NumNeigh 100" > $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 500/" src/infoli.h
+make cluster
+echo "NumNeigh 500" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 1000/" src/infoli.h
+make cluster
+echo "NumNeigh 1000" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 5000/" src/infoli.h
+make cluster
+echo "NumNeigh 5000" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 10000/" src/infoli.h
+make cluster
+echo "NumNeigh 10000" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 50000/" src/infoli.h
+make cluster
+echo "NumNeigh 50000" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
+sed -i "44s/.*/#define TIME_MUX_FACTOR 100000/" src/infoli.h
+make cluster
+echo "NumNeigh 100000" >> $NUM_PROBLEM
+./infoli_sim_impl >> $NUM_PROBLEM
