@@ -148,7 +148,7 @@ void ComputeNetwork(
 	mod_prec iAppin[MAX_TIME_MUX],
 	int N_Size,
 	int Mux_Factor,
-	mod_prec Connectivity_Matrix[CONN_MATRIX_SIZE],
+	mod_prec Connectivity_Matrix[MAX_TIME_MUX],
 	mod_prec cellOut[MAX_TIME_MUX])
 {
 

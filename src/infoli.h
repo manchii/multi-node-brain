@@ -37,7 +37,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /*** MACROS ***/
 //Network Parameters///////////////////////////////////////////////////////////////////////////////////////////
 #define RAND_INIT 0 // make it zero to facilitate debugging
-#define SIMTIME 10 // in ms, for when no input file is provided  3000
+#define SIMTIME 100 // in ms, for when no input file is provided  3000
 //IO network size is IO_NETWORK_DIM1*IO_NETWORK_DIM2 times the TIME_MUX_FACTOR
 
 //Change the Time Mux Factor to change the number of simulated cells in the network
@@ -209,7 +209,7 @@ void ComputeNetwork_iC(
 	mod_prec iAppin[MAX_TIME_MUX],
 	int N_Size,
 	int Mux_Factor,
-	mod_prec Connectivity_Matrix[CONN_MATRIX_SIZE],
+	mod_prec Connectivity_Matrix[],
 	mod_prec cellOut[MAX_TIME_MUX]);
 
 #endif
