@@ -56,3 +56,5 @@ sed -i "44s/.*/#define TIME_MUX_FACTOR 100000/" src/infoli.h
 make cluster
 echo "NumNeigh 100000" >> $NUM_PROBLEM
 ./infoli_sim_impl >> $NUM_PROBLEM
+
+sed -i "44s/.*/#define TIME_MUX_FACTOR 10000/" src/infoli.h
