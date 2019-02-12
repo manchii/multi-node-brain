@@ -1,0 +1,33 @@
+#PBS -N InfOli
+#PBS -q phi-n2h72
+#PBS -l nodes=zarate-3d.cnca:ppn=256
+#PBS -l walltime=24:00:00
+
+cd $PBS_O_WORKDIR
+
+for VAR in 100 500 1000 5000 10000 20000 40000
+do
+  sed -i "44s/.*/#define TIME_MUX_FACTOR "$VAR"/" src/infoli.h
+  make cluster
+  export OUTPUT=$VAR"-scaling.txt"
+  echo $OUTPUT
+  export OMP_NUM_THREADS=1
+  echo "Thread 1" > $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+  export OMP_NUM_THREADS=2
+  echo "Thread 2" >> $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+  export OMP_NUM_THREADS=4
+  echo "Thread 4" >> $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+  export OMP_NUM_THREADS=8
+  echo "Thread 8" >> $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+  export OMP_NUM_THREADS=16
+  echo "Thread 16" >> $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+  export OMP_NUM_THREADS=32
+  echo "Thread 32" >> $OUTPUT
+  ./infoli_sim_impl >> $OUTPUT
+done
+

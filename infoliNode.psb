@@ -48,13 +48,13 @@ sed -i "44s/.*/#define TIME_MUX_FACTOR 10000/" src/infoli.h
 make cluster
 echo "NumNeigh 10000" >> $NUM_PROBLEM
 ./infoli_sim_impl >> $NUM_PROBLEM
-sed -i "44s/.*/#define TIME_MUX_FACTOR 50000/" src/infoli.h
+sed -i "44s/.*/#define TIME_MUX_FACTOR 25000/" src/infoli.h
 make cluster
-echo "NumNeigh 50000" >> $NUM_PROBLEM
+echo "NumNeigh 25000" >> $NUM_PROBLEM
 ./infoli_sim_impl >> $NUM_PROBLEM
-sed -i "44s/.*/#define TIME_MUX_FACTOR 100000/" src/infoli.h
+sed -i "44s/.*/#define TIME_MUX_FACTOR 45000/" src/infoli.h
 make cluster
-echo "NumNeigh 100000" >> $NUM_PROBLEM
+echo "NumNeigh 45000" >> $NUM_PROBLEM
 ./infoli_sim_impl >> $NUM_PROBLEM
 
 sed -i "44s/.*/#define TIME_MUX_FACTOR 10000/" src/infoli.h
